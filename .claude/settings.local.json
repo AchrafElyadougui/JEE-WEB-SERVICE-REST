@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn -q -o compile)",
+      "Bash(mvn -q -o package)",
+      "Bash(unzip -l target/*.war)",
+      "Read(//c/wildfly-42.0.0.Final/modules/**)",
+      "Read(//c/wildfly-42.0.0.Final/modules/system/layers/base/com/h2database/h2/main/**)",
+      "Bash(mkdir -p \"/c/wildfly-42.0.0.Final/modules/system/layers/base/com/mysql/main\")",
+      "Bash(cp \"/c/Users/yyach/.m2/repository/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13.jar\" \"/c/wildfly-42.0.0.Final/modules/system/layers/base/com/mysql/main/\")",
+      "Bash(unzip -l \"/c/Users/yyach/.m2/repository/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13.jar\")",
+      "Bash(\"/c/xampp/mysql/bin/mysql.exe\" -u root -h 127.0.0.1 -P 3306 -e \"SHOW DATABASES; \")",
+      "Bash(\"/c/xampp/mysql/bin/mysql.exe\" -u root -h 127.0.0.1 -P 3306 -e \"USE DB_WS_SDDI4_G2; SHOW TABLES; DESCRIBE STUDENTS;\")",
+      "Bash(\"/c/xampp/mysql/bin/mysql.exe\" -u root -h 127.0.0.1 -P 3306 studentdb -e \"SHOW TABLES;\")",
+      "Bash(\"/c/xampp/mysql/bin/mysql.exe\" -u root -h 127.0.0.1 -P 3306 jee -e \"SHOW TABLES;\")",
+      "Bash(/c/xampp/mysql/bin/mysql.exe *)",
+      "Bash(tasklist //FI \"IMAGENAME eq java.exe\")",
+      "PowerShell(Get-CimInstance *)",
+      "Read(//c/wildfly-42.0.0.Final/bin/**)",
+      "Bash(./jboss-cli.bat --connect --command=\"/subsystem=datasources:read-children-names\\(child-type=data-source\\)\")",
+      "Bash(./jboss-cli.bat --connect --command=\"/subsystem=datasources:read-children-names\\(child-type=jdbc-driver\\)\")",
+      "Bash(./jboss-cli.bat --connect --file=\"C:\\\\Users\\\\yyach\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-yyach-Documents-SDDI4-WebService-JeeProjectWebService\\\\68a590c4-7bd5-40c4-8ab8-23e0f856856e\\\\scratchpad\\\\setup-mysql-ds.cli\")",
+      "Bash(./jboss-cli.bat --connect --command=\"/subsystem=datasources/data-source=StudentDS:test-connection-in-pool\")",
+      "Bash(curl -s -w \"\\\\n[%{http_code}]\\\\n\" http://localhost:8085/JeeProjectWebService-1.0-SNAPSHOT/api/studentListe)",
+      "Bash(curl -s -w '\\\\n[%{http_code}]\\\\n' -X POST http://localhost:8085/JeeProjectWebService-1.0-SNAPSHOT/api/studentListe -H 'Content-Type: application/json' -d '{\"firstNameStudent\":\"Younes\",\"lastNameStudent\":\"Zahir\",\"dateBirthStudent\":\"2000-05-16\"}')",
+      "Bash(curl -s -w \"\\\\n[%{http_code}]\\\\n\" http://localhost:8085/JeeProjectWebService-1.0-SNAPSHOT/api/studentListe/1)",
+      "Bash(curl -s -w '\\\\n[%{http_code}]\\\\n' -X PUT http://localhost:8085/JeeProjectWebService-1.0-SNAPSHOT/api/studentListe/1 -H 'Content-Type: application/json' -d '{\"firstNameStudent\":\"Younes2\",\"lastNameStudent\":\"Zahir2\",\"dateBirthStudent\":\"1999-01-01\"}')",
+      "Bash(curl -s -w \"\\\\n[%{http_code}]\\\\n\" -X DELETE http://localhost:8085/JeeProjectWebService-1.0-SNAPSHOT/api/studentListe/1)",
+      "Bash(curl *)",
+      "Bash(./jboss-cli.bat --connect --command=\"/subsystem=datasources/data-source=StudentDS:write-attribute\\(name=connection-url,value=\\\\\"jdbc:mysql://localhost:3306/studentdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC\\\\\"\\)\")",
+      "Bash(./jboss-cli.bat --connect --file=\"C:\\\\Users\\\\yyach\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-yyach-Documents-SDDI4-WebService-JeeProjectWebService\\\\68a590c4-7bd5-40c4-8ab8-23e0f856856e\\\\scratchpad\\\\update-ds-url.cli\")",
+      "Bash(./jboss-cli.bat --connect --command=\":reload\")",
+      "Bash(./jboss-cli.bat --connect --command=\"/subsystem=datasources/data-source=StudentDS:read-attribute\\(name=connection-url\\)\")"
+    ]
+  }
+}
