@@ -1,6 +1,9 @@
-package my.ac.estem.jeeprojectwebservice;
+package my.ac.estem.jeeprojectwebservice.webservice;
 
+import java.io.File;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Scanner;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -15,12 +18,30 @@ import jakarta.ws.rs.core.Response;
 
 import my.ac.estem.jeeprojectwebservice.dao.DaoImp;
 import my.ac.estem.jeeprojectwebservice.dao.IDao;
-import my.ac.estem.jeeprojectwebservice.dao.Student;
+import my.ac.estem.jeeprojectwebservice.model.Student;
 
 @Path("/studentListe")
 public class Students {
 
-    private final IDao dao = new DaoImp();
+    public Students() throws Exception {
+    }
+
+    InputStream input =
+            getClass().getClassLoader().getResourceAsStream("WS-Student-Config.txt");
+    Scanner scanner;
+    {
+        assert input != null;
+        scanner = new Scanner(input);
+    }
+
+    String daoClassName = scanner.nextLine();
+    Class<?> cDao = Class.forName(daoClassName);
+    IDao dao = (IDao) cDao.getDeclaredConstructor().newInstance();
+//    Method method = cMetier.getMethod("setDao",IDao.class);
+//    method.invoke(metier,dao);
+//    private final IDao dao = new DaoImp();
+
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

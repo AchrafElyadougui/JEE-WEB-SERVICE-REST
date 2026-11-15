@@ -1,5 +1,7 @@
 package my.ac.estem.jeeprojectwebservice.dao;
 
+import my.ac.estem.jeeprojectwebservice.model.Student;
+
 import java.util.List;
 
 public interface IDao {

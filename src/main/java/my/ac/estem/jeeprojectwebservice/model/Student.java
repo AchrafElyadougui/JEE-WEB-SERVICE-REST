@@ -1,4 +1,4 @@
-package my.ac.estem.jeeprojectwebservice.dao;
+package my.ac.estem.jeeprojectwebservice.model;
 
 import java.sql.Date;
 
